@@ -85,7 +85,7 @@ namespace Exchange
         // 网络请求
         public JObject Request(string number,string sourceCode,string targetCodes) 
         {
-            var request = (HttpWebRequest)WebRequest.Create("http://www.erning.cn:10205/base/exchange?money=" + number + "&sourceCode=" + sourceCode + "&targetCodes="+targetCodes);
+            var request = (HttpWebRequest)WebRequest.Create("https://www.erning.cn:10205/base/exchange?money=" + number + "&sourceCode=" + sourceCode + "&targetCodes="+targetCodes);
             var response = (HttpWebResponse)request.GetResponse();
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
             return Str2Json(responseString);
