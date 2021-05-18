@@ -7,11 +7,13 @@ using Wox.Plugin;
 using Newtonsoft.Json.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
+using Wox.Infrastructure.Storage;
 
 namespace Exchange
 {
-    public class Class1 : IPlugin
+    public class Class1 : IPlugin,ISettingProvider
     {
+
         public void Init(PluginInitContext context)
         {
             // 初始化
@@ -134,8 +136,10 @@ namespace Exchange
         // 网络请求
         public JObject Request(string baseCode)
         {
-            string key = "d4a51cdfd3edb47b406668bb";
-            var request = (HttpWebRequest)WebRequest.Create("https://v6.exchangerate-api.com/v6/" + key + "/latest/" + baseCode);
+
+            PluginJsonStorage<Settings> storage = new PluginJsonStorage<Settings>();
+            Settings settings = storage.Load();
+            var request = (HttpWebRequest)WebRequest.Create("https://v6.exchangerate-api.com/v6/" + settings.apiKey + "/latest/" + baseCode);
             var response = (HttpWebResponse)request.GetResponse();
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
             return Str2Json(responseString);
@@ -145,6 +149,11 @@ namespace Exchange
         public static JObject Str2Json(string jsonStr)
         {
             return JObject.Parse(jsonStr);
+        }
+
+        public System.Windows.Controls.Control CreateSettingPanel()
+        {
+            return new SettingsControl();
         }
     }
 }

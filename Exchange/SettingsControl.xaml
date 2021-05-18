@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Exchange.SettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Exchange"
+             mc:Ignorable="d" 
+             Background="White"   
+             d:DesignHeight="300" d:DesignWidth="500">
+    <StackPanel Margin="10" VerticalAlignment="Top">
+        <TextBlock Text="Exchange data from exchangerate-api.com." />
+        <TextBlock Foreground="Gray">For more currency codes, please see <Hyperlink TargetName="" RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.exchangerate-api.com/docs/supported-currencies/">Supported Currencies</Hyperlink></TextBlock>
+        <TextBlock Margin="0,10,0,0" Text="Please bind your own apiKey of Exchangerate api." />
+        <TextBlock Foreground="Gray">Apply apiKey in <Hyperlink TargetName="" RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://app.exchangerate-api.com/">https://app.exchangerate-api.com</Hyperlink></TextBlock>
+        <TextBox x:Name="apiKeyText" Margin="0,5,0,0"/>
+        <Button Margin="0,16,0,0" Content="Apply" HorizontalAlignment="Right" Padding="10,0,10,0" Click="onClickSave" />
+    </StackPanel>
+</UserControl>
