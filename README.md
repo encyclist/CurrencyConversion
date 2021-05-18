@@ -1,4 +1,4 @@
-# Exchange
+# ExchangeRate
 [这是一个汇率转换的wox插件](http://www.wox.one/plugin/369)
 
 * 以前的版本都不能用了，使用`wpm uninstall 汇率转换`卸载后直接使用`wpm install ExchangeRate`重新安装新版即可
